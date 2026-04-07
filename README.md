@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Cricket Intelligence Platform
 
 A comprehensive MERN stack application for cricket analytics, player management, and intelligent team strategy with AI-powered insights.
@@ -318,3 +319,6 @@ Contributions welcome! Feel free to fork and submit PRs.
 **Ready to transform cricket with intelligence?** 🏏✨
 
 Start at http://localhost:3000 after running the servers!
+=======
+# Criconnect
+>>>>>>> b7a44045a8d1b3f1dbab5131c17784818cc856bb
