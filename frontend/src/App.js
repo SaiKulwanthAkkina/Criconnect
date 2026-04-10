@@ -1,6 +1,27 @@
+import React, { useEffect, useState } from 'react';
+
+function App() {
+  const [message, setMessage] = useState('Loading...');
+
+  useEffect(() => {
+    fetch('http://backend:5000/')
+      .then((res) => res.text())
+      .then((text) => setMessage(text))
+      .catch(() => setMessage('Error fetching backend'));
+  }, []);
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h1>MERN CI/CD App</h1>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default App;
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,7 +37,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import PlayerDashboard from './pages/PlayerDashboard';
 import Profile from './pages/Profile';
 import Dashboard from './pages/Dashboard';
 import Feed from './pages/Feed';
@@ -29,9 +49,8 @@ function App() {
  
 
   return (
-    <Router>
-      <AuthProvider>
-        <PlayerProvider>
+    <AuthProvider>
+      <PlayerProvider>
         <div className="min-h-screen bg-gray-50">
           <Navbar />
           <Routes>
@@ -69,10 +88,9 @@ function App() {
             />
           </Routes>
         </div>
-        </PlayerProvider>
-        <ToastContainer position="bottom-right" autoClose={3000} />
-      </AuthProvider>
-    </Router>
+      </PlayerProvider>
+      <ToastContainer position="bottom-right" autoClose={3000} />
+    </AuthProvider>
   );
 }
 

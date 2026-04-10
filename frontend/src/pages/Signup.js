@@ -4,7 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../utils/api';
 import { toast } from 'react-toastify';
-import { ROLES } from '../utils/constants';
 
 const Signup = () => {
   const navigate = useNavigate();

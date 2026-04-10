@@ -11,6 +11,9 @@ const playerRoutes = require('./routes/playerRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const matchRoutes = require('./routes/matchRoutes');
 
+const path = require('path');
+const fs = require('fs');
+
 // Initialize Express app
 const app = express();
 
@@ -36,6 +39,18 @@ app.use('/api/auth', authRoutes);
 app.use('/api/players', playerRoutes);
 app.use('/api/teams', teamRoutes);
 app.use('/api/matches', matchRoutes);
+
+// Serve frontend build if available (SPA)
+const clientBuildPath = path.join(__dirname, '..', '..', 'frontend', 'build');
+if (fs.existsSync(clientBuildPath)) {
+  app.use(express.static(clientBuildPath));
+
+  // Fallback to index.html for non-API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 
 // 404 Handler
 app.use((req, res) => {

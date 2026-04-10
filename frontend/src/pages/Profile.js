@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   const [isEdit, setIsEdit] = useState(false);
   const [profileId, setProfileId] = useState(null);
@@ -55,6 +55,11 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!isAuthenticated) {
+      toast.error('Please log in to create a profile');
+      navigate('/login');
+      return;
+    }
     try {
       let res;
       if (isEdit && profileId) {

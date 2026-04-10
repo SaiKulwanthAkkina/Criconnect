@@ -11,10 +11,6 @@ const PlayerDashboard = () => {
   const [analysis, setAnalysis] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
-  useEffect(() => {
-    fetchPlayerProfile();
-  }, []);
-
   const fetchPlayerProfile = async () => {
     try {
       // Get player profile
@@ -37,6 +33,10 @@ const PlayerDashboard = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (user) fetchPlayerProfile();
+  }, [user]);
 
   // Mock performance data
   const performanceData = [
