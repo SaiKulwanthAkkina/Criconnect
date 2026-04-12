@@ -1,0 +1,3 @@
+name: Deploy MERN Frontend to GitHub Pages (DISABLED)
+
+# Disabled: original workflow referenced ./client directory. Use frontend.yml instead.

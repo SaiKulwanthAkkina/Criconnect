@@ -1,0 +1,6 @@
+name: CI/CD — Docker Compose Build & Push (DISABLED)
+
+# Disabled: original workflow required Docker Hub secrets and docker-compose.ci.yml
+# Kept here for reference; rename to remove .disabled to enable.
+
+# Original contents archived.
